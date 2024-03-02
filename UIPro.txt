@@ -6154,23 +6154,6 @@ spawn(function()
 end)
 
 
-Tabs.Race:AddButton({
-    Title = "Teleport PVP Zone",
-    Description = "",
-    Callback = function()
-        toTarget(CFrame.new(28766.681640625, 14967.1455078125, -164.13290405273438))
-    end
-})
-
-Tabs.Race:AddButton({
-    Title = "Teleport To Safe Zone PVP",
-    Description = "",
-    Callback = function()
-        toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
-    end
-})
-
-
 local ToggleAuttoKilPlayerTrial = Tabs.Race:AddToggle("ToggleAuttoKilPlayerTrial", {Title = "Kill Người chơi trial",Description = "", Default = false })
 ToggleAuttoKilPlayerTrial:OnChanged(function(Value)
     _G.KillAfterTrials = value
@@ -6201,6 +6184,8 @@ spawn(function()
         end)
     end
 end)
+
+
 
 local ToggleRandomBone = Tabs.Shop:AddToggle("ToggleRandomBone", {Title = "Đổi xương",Description = "", Default = false })
 ToggleRandomBone:OnChanged(function(Value)  
@@ -6436,6 +6421,8 @@ function Hop()
 	end
 	Teleport()
 end      
+
+
 
 
 local Mastery = Tabs.Misc:AddSection("Đội")
