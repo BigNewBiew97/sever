@@ -5930,6 +5930,51 @@ Tabs.Visual:AddInput("Input_Fragments", {
     end
 })
 
+if First_Sea or Second_Sea then
+    local Mastery = Tabs.Race:AddSection("Sea 3 làm ơn!!!")
+end
+
+if Third_Sea then
+function LockMoon()
+    local Lighting = game:GetService("Lighting")
+    local Cam = game.Workspace.CurrentCamera
+    local CFNew, CFAng = CFrame.new, CFrame.Angles
+    local asin = math.asin
+    
+    local Camera = workspace.CurrentCamera
+    local Player = game.Players.LocalPlayer
+    local Character = Player.Character
+    local Root = Character:WaitForChild("HumanoidRootPart")
+    local Neck = Character:FindFirstChild("Neck", true)
+    local YOffset = Neck.C0.Y
+    game:GetService("RunService").RenderStepped:Connect(function()
+    if _G.LockMoon then
+        game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
+    
+        local pos = Vector3.new(0, 0, 0)
+        local lookAt = Lighting:GetMoonDirection()
+        local cameraCFrame = CFrame.new(pos, lookAt)
+        workspace.CurrentCamera.CFrame = cameraCFrame
+        local CameraDirection = Root.CFrame:toObjectSpace(cameraCFrame).lookVector.unit
+        if Neck and Lock then
+            Neck.C0 = CFNew(0, YOffset, 0) * CFAng(0, -asin(CameraDirection.x), 0) * CFAng(asin(CameraDirection.y), 0, 0)
+        end
+    else
+        Cam.FieldOfView = 70
+    end
+    end)
+end
+
+LockMoon()
+
+local LockMoonToggle = Tabs.Race:AddToggle("LockMoon_Toggle", {Title = "Khoá nhìn vào moon", Default = false })
+Options.LockMoon_Toggle:SetValue(false)
+
+LockMoonToggle:OnChanged(function(value)
+    _G.LockMoon = value
+end)
+
+
 Tabs.Race:AddButton({
     Title = "Đền Thờ",
     Description = "",
@@ -6113,6 +6158,56 @@ spawn(function()
         end
     end)
 end)
+
+
+Tabs.Race:AddButton({
+    Title = "Teleport PVP Zone",
+    Description = "",
+    Callback = function()
+        toTarget(CFrame.new(28766.681640625, 14967.1455078125, -164.13290405273438))
+    end
+})
+
+Tabs.Race:AddButton({
+    Title = "Teleport To Safe Zone PVP",
+    Description = "",
+    Callback = function()
+        toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
+    end
+})
+
+
+local ToggleAuttoKilPlayerTrial = Tabs.Race:AddToggle("ToggleAuttoKilPlayerTrial", {Title = "Kill Người chơi trial",Description = "", Default = false })
+ToggleAuttoKilPlayerTrial:OnChanged(function(Value)
+    _G.KillAfterTrials = value
+    StopTween(_G.KillAfterTrials)
+end)
+
+spawn(function()
+    while wait() do 
+        pcall(function()
+            if _G.KillAfterTrials then
+                for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+                        if v.Humanoid.Health > 0 then
+                            repeat wait()
+                                AutoHaki()
+                                EquipWeapon(_G.SelectWeapon)
+                                NameTarget = v.Name
+                                TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,0,5))
+                                v.HumanoidRootPart.CanCollide = false
+                                v.Head.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                Click()
+                            until not _G.KillAfterTrials or not v.Parent or v.Humanoid.Health <= 0 
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
 
 
 
