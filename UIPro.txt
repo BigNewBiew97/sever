@@ -5930,11 +5930,6 @@ Tabs.Visual:AddInput("Input_Fragments", {
     end
 })
 
-if First_Sea or Second_Sea then
-    local Mastery = Tabs.Race:AddSection("Sea 3 làm ơn!!!")
-end)
-
-if Third_Sea then
 function LockMoon()
     local Lighting = game:GetService("Lighting")
     local Cam = game.Workspace.CurrentCamera
@@ -6167,7 +6162,6 @@ Tabs.Race:AddButton({
         toTarget(CFrame.new(28766.681640625, 14967.1455078125, -164.13290405273438))
     end
 })
-
 
 Tabs.Race:AddButton({
     Title = "Teleport To Safe Zone PVP",
