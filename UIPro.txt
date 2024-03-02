@@ -4244,8 +4244,6 @@ end)
     end)
 end
 
-local Items = Tabs.Main:AddSection("Items Farm")
-
 if Third_Sea then
     local ToggleHallow = Tabs.Main:AddToggle("ToggleHallow", {Title = "Cày Lưỡi Hái Bóng Tối ( Từ A - Z )",Description = "", Default = false })
 
