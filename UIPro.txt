@@ -6,8 +6,8 @@ repeat wait() until game:IsLoaded()
 local Window = SpeedHubX:CreateWindow({
     Title = "BEST HUB | Verison 4.0",
     SubTitle = "By Huy and Best Trial",
-    TabWidth = 140,
-    Size = UDim2.fromOffset(530, 350),
+    TabWidth = 80,
+    Size = UDim2.fromOffset(500, 350),
     Acrylic = false,
     Theme = "Rose",
     MinimizeKey = Enum.KeyCode.End
