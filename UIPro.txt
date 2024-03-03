@@ -1,3 +1,38 @@
+_G.BringMonster = true
+_G.BringMode = 300
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.BringMonster then
+                CheckLevel()
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff [Lv. 800]" or Mon == "Monkey [Lv. 14]" or Mon == "Dragon Crew Warrior [Lv. 1575]" or Mon == "Dragon Crew Archer [Lv. 1600]") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 220 then
+                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                        v.HumanoidRootPart.CFrame = PosMon
+                        v.Humanoid:ChangeState(14)
+                        v.HumanoidRootPart.CanCollide = false
+                        v.Head.CanCollide = false
+                        if v.Humanoid:FindFirstChild("Animator") then
+                            v.Humanoid.Animator:Destroy()
+                        end
+                        sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
+                    elseif _G.AutoFarm and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringMode then
+                        v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+                        v.HumanoidRootPart.CFrame = PosMon
+                        v.Humanoid:ChangeState(14)
+                        v.HumanoidRootPart.CanCollide = false
+                        v.Head.CanCollide = false
+                        if v.Humanoid:FindFirstChild("Animator") then
+                            v.Humanoid.Animator:Destroy()
+                        end
+                        sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
+                    end
+                end
+            end
+        end)
+    end
+end)
+
 spawn(function() 
     repeat
         task.wait()
@@ -3127,7 +3162,7 @@ spawn(function()
                                             Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
 			                                v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
                                             v.HumanoidRootPart.Transparency = 1
-                                            v.Humanoid.JumpPower = 0
+                                            v.Humanoid.JumpPower = 2
                                             v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             FarmPos = v.HumanoidRootPart.CFrame
