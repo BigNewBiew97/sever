@@ -134,17 +134,17 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
-    Main = Window:AddTab({ Title = "chính", Icon = "home" }),
-    Stats = Window:AddTab({ Title = "chỉ số", Icon = "plus-circle" }),
-    Player = Window:AddTab({ Title = "người chơi", Icon = "baby" }),
-    Teleport = Window:AddTab({ Title = "tele đảo", Icon = "palmtree" }),
-    Fruit = Window:AddTab({ Title = "trái", Icon = "cherry" }),
-    Raid = Window:AddTab({ Title = "tập kích", Icon = "swords" }),
-    Visual = Window:AddTab({ Title = "Visual", Icon = "scan-face" }),
-    Race = Window:AddTab({ Title = "Tộc V4", Icon = "chevrons-right" }),
-    Shop = Window:AddTab({ Title = "cửa hàng", Icon = "shopping-cart" }),
-	Misc = Window:AddTab({ Title = "khác", Icon = "list-plus" }),
-    Setting = Window:AddTab({ Title = "cài đặt", Icon = "settings" }),
+    Main = Window:AddTab({ Title = "chính", Icon = "" }),
+    Stats = Window:AddTab({ Title = "chỉ số", Icon = "" }),
+    Player = Window:AddTab({ Title = "người chơi", Icon = "" }),
+    Teleport = Window:AddTab({ Title = "tele đảo", Icon = "" }),
+    Fruit = Window:AddTab({ Title = "trái", Icon = "" }),
+    Raid = Window:AddTab({ Title = "tập kích", Icon = "" }),
+    Visual = Window:AddTab({ Title = "Visual", Icon = "" }),
+    Race = Window:AddTab({ Title = "Tộc V4", Icon = "" }),
+    Shop = Window:AddTab({ Title = "cửa hàng", Icon = "" }),
+	Misc = Window:AddTab({ Title = "khác", Icon = "" }),
+    Setting = Window:AddTab({ Title = "cài đặt", Icon = "" }),
 }
 local Options = Fluent.Options
 do
