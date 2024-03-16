@@ -10,7 +10,6 @@ PHẦN MỀM NÀY ĐƯỢC CUNG CẤP "NHƯ VẬY", KHÔNG CÓ BẢO ĐẢM NÀO
 https://raw.githubusercontent.com/Gamer144roblox/Ch-ng-skid-/main/B%E1%BA%A3n%20quy%E1%BB%81n
 ]]
 ---///--------------------------------------------------------------\\\---
-wait(1),
 -- Tạo một đối tượng ScreenGui để chứa nút và hiển thị trên màn hình của người chơi
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game:GetService("Players").LocalPlayer.PlayerGui
