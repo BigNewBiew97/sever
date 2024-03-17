@@ -2604,7 +2604,7 @@ if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn
 end
 
 local Farming = Tabs.Main:AddSection("Farming")
-local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
+local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack','Extra Fast Attack'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
         Title = "Chọn Tốc Độ Đánh",
@@ -2622,6 +2622,8 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
 		_G.Fast_Delay = 0.02
 	elseif _G.FastAttackGamer144YTB_Mode == "Super Fast Attack" then
 		_G.Fast_Delay = 0.008
+	elseif _G.FastAttackGamer144_Mode == "Extra Fast Attack" then
+	    _G.Fast_Delay = 0.003
 	end
 end)
 
