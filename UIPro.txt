@@ -7169,7 +7169,7 @@ ToggleRemove:OnChanged(function(Value)
         end)
 
 
-local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Click 0s", Default = false })
+local Toggle = Tabs.Setting:AddToggle("MyToggle", {Title = "Click 0s", Default = false })
 
     Toggle:OnChanged(function(Value)
       _G.FastAttack4 = Value
