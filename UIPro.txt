@@ -145,6 +145,7 @@ local Tabs = {
     Shop = Window:AddTab({ Title = "cửa hàng", Icon = "" }),
 	Misc = Window:AddTab({ Title = "khác", Icon = "" }),
     Setting = Window:AddTab({ Title = "cài đặt", Icon = "" }),
+    Fluent = Window:AddTab({ Title = "Config" })
 }
 local Options = Fluent.Options
 do
@@ -6331,36 +6332,6 @@ Tabs.Race:AddButton({
     end
 })
 
-local ToggleKillPlayerTrial = Tabs.Race:AddToggle("ToggleKillPlayerTrial", {Title = "Auto Kill player trial",Description = "", Default = false })
-ToggleKillPlayerTrial:OnChanged(function(Value)
-    _G.KillAfterTrials = value
-end)
-Options.ToggleKillPlayerTrial:SetValue(false)
-spawn(function()
-    while wait() do 
-        pcall(function()
-            if _G.KillAfterTrials then
-                for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-                        if v.Humanoid.Health > 0 then
-                            repeat wait()
-                                AutoHaki()
-                                EquipWeapon(SelectWeapon)
-                                NameTarget = v.Name
-                                TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,0,5))
-                                v.HumanoidRootPart.CanCollide = false
-                                v.Head.CanCollide = false
-                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                Click()
-                            until not _G.KillAfterTrials or not v.Parent or v.Humanoid.Health <= 0 
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end)
-
 
 local Mastery = Tabs.Race:AddSection("Tự Động Luyện TỘc")
 
@@ -7223,3 +7194,16 @@ SliderPosZ:OnChanged(function(Value)
      posZ = Value
 end)
 SliderPosZ:SetValue(0)
+--]]-- fluent
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({})
+InterfaceManager:BuildInterfaceSection(Tabs.Fluent)
+SaveManager:BuildConfigSection(Tabs.Fluent)
+Window:SelectTab(1)
+SaveManager:LoadAutoloadConfig()
+--[[
+    end
+    delfolder("Best Hub")
+--]]
